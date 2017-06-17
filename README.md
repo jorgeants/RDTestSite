@@ -4,10 +4,9 @@ The application that show users that accessed the partners sites
 
 ## Dependecies
 
-* ruby 2.3.4
-* bundler
-* rails 5.1.1
-* sqlite
+* Ruby version 2.3.4
+* Bundler
+* PostgreSQL version 9.2 or above
 
 ## Prepare
 
@@ -15,7 +14,10 @@ Clone this repository and execute the comands in your terminal:
 
 ```
 bundle install
+
 rails db:create db:migrate
+
+rails db:create db:migrate RAILS_ENV=test
 ```
 
 ## Up the server
