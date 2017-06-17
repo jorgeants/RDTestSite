@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>RDTestApp</title>
+	  <%= csrf_meta_tags %>
+
+	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	</head>
+		
+	<body>
+		<header>
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+				<div class="container">
+	        <%= render 'layouts/menu' %>
+				</div>
+			</nav>
+		</header>
+
+		<section class="container">
+	  	<%= yield %>
+	  </section>
+	  
+	  <footer>
+	    <div class="container">
+	      <br>
+	    	<p>Copyright © 2017 - RDStation</p>
+	      <br>
+	    </div>
+	  </footer>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'false' %>
+	</body>
+</html>
