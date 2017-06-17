@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
 
-	post '/contacts/cookie', to: 'contacts#cookie', :defaults => { :format => 'json' }
-	post '/contacts/access', to: 'contacts#access', :defaults => { :format => 'json' }
-	resources :contacts
+  get 'pages/home'
+
+  get 'pages/pricing'
+
+  get 'pages/about'
+
+  get 'pages/contact'
+
 	root to: 'application#index'
 
 end
