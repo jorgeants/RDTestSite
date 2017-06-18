@@ -1,7 +1,10 @@
 var CookieHandler = (function() {
 
-  var url = 'http://server.dev:4567/cookie';
-  var cookieName = '_client.cookie';
+  // var url = 'https://rdtestapplication.herokuapp.com/contacts/cookie';
+  // var urlForSendCurretPage = 'https://rdtestapplication.herokuapp.com/contacts/access';
+  var url = 'http://localhost:3000/contacts/cookie';
+  var urlForSendCurretPage = 'http://localhost:3000/contacts/access';
+  var cookieName = '_rdtestsite.cookie';
 
   var init = function() {
     makeRequest();
@@ -9,31 +12,38 @@ var CookieHandler = (function() {
 
   var makeRequest = function() {
     httpRequest = new XMLHttpRequest();
-    httpRequest.onreadystatechange = onRequestComplete;
+    httpRequest.onreadystatechange = onCreateCookieRequestComplete;
     httpRequest.open('POST', url, true);
     httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
     httpRequest.withCredentials = true;
     httpRequest.send();
   };
 
-  var onRequestComplete = function() {
+  var sendAccessPage = function() {
+    var currentPage = window.location.href,
+        cookie = getCookie(),
+        params = "url="+currentPage+"&key="+cookie.key;
+    httpRequest = new XMLHttpRequest();
+    httpRequest.open('POST', urlForSendCurretPage, true);
+    httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+    httpRequest.withCredentials = true;
+    httpRequest.send(params);
+  };
+
+  var onCreateCookieRequestComplete = function() {
     var COMPLETE = 4
     var OK = 200;
+    var CREATED = 201;
+    var NO_CONTENT = 204;
 
-    if (this.readyState === COMPLETE && this.status == OK) {
+    if (this.readyState === COMPLETE && (this.status == OK || this.status == CREATED || this.status == NO_CONTENT)) {
       createCookie(this.response);
-      showCookieValues();
+      sendAccessPage();
     }
   };
 
   var createCookie = function(data) {
     document.cookie = cookieName + "=" + data;
-  };
-
-  var showCookieValues = function() {
-    var cookie = getCookie();
-    document.getElementById('cookie-id').innerHTML = cookie.id;
-    document.getElementById('cookie-creation').innerHTML = cookie.creation_time;
   };
 
   var getCookie = function() {
@@ -47,5 +57,3 @@ var CookieHandler = (function() {
   };
 
 })();
-
-window.addEventListener("load", CookieHandler.init);

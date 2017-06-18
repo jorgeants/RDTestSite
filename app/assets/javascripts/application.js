@@ -17,3 +17,5 @@
 //= require bootstrap/dropdown
 //= require bootstrap/collapse
 //= require_tree .
+
+document.addEventListener("turbolinks:load", CookieHandler.init);
