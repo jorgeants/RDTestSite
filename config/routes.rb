@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
 	get '/contact', to: 'pages#contact'
 
+	resource :messages, only: [:create]
+
 	root to: 'pages#home'
 
 end

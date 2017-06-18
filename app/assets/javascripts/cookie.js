@@ -1,7 +1,5 @@
 var CookieHandler = (function() {
 
-  // var url = 'https://rdtestapplication.herokuapp.com/contacts/cookie';
-  // var urlForSendCurretPage = 'https://rdtestapplication.herokuapp.com/contacts/access';
   var url = 'http://localhost:3000/contacts/cookie';
   var urlForSendCurretPage = 'http://localhost:3000/contacts/access';
   var cookieName = '_rdtestsite.cookie';
@@ -43,7 +41,7 @@ var CookieHandler = (function() {
   };
 
   var createCookie = function(data) {
-    document.cookie = cookieName + "=" + data;
+    document.cookie = cookieName + "=" + encodeURIComponent(data);
   };
 
   var getCookie = function() {
