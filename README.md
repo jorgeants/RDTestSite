@@ -25,7 +25,7 @@ rails db:create db:migrate RAILS_ENV=test
 For run the application and view in your browser, run this:
 
 ```
-rails s
+rails s -p 3001
 ```
 
 ## Tests
