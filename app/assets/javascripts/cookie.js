@@ -1,7 +1,9 @@
 var CookieHandler = (function() {
 
-  var url = 'https://rdtestapplication.herokuapp.com/contacts/cookie';
-  var urlForSendCurretPage = 'https://rdtestapplication.herokuapp.com/contacts/access';
+  // var url = 'https://rdtestapplication.herokuapp.com/contacts/cookie';
+  // var urlForSendCurretPage = 'https://rdtestapplication.herokuapp.com/contacts/access';
+  var url = 'http://localhost:3000/contacts/cookie';
+  var urlForSendCurretPage = 'http://localhost:3001/contacts/access';
   var cookieName = '_rdtestsite.cookie';
 
   var init = function() {
